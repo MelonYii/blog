@@ -1,6 +1,6 @@
-baseURL = "https://melonyii.github.io/docs"
+baseURL = "https://melonyii.github.io/blog/"
 languageCode = "zh-cn"
 title = "Melon Bolg"
 theme = "hugo-nuo"
 publishDir = "docs"
-canonifyurls = true
+canonifyurls = "true"
