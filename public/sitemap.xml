@@ -3,95 +3,95 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</loc>
+    <loc>https://melonyii.github.io/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://melonyii.github.io/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2017-02-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/articles/</loc>
+    <loc>https://melonyii.github.io/categories/articles/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://melonyii.github.io/categories/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>https://melonyii.github.io/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/fetch/</loc>
+    <loc>https://melonyii.github.io/tags/fetch/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/js/</loc>
+    <loc>https://melonyii.github.io/tags/js/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://melonyii.github.io/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/</loc>
+    <loc>https://melonyii.github.io/post/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/2017-05-19-react-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%96%91%E9%97%AE/</loc>
+    <loc>https://melonyii.github.io/post/2017-05-19-react-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%96%91%E9%97%AE/</loc>
     <lastmod>2017-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/sequel/</loc>
+    <loc>https://melonyii.github.io/tags/sequel/</loc>
     <lastmod>2017-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://melonyii.github.io/tags/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/2018-01-26-datadog-django/</loc>
+    <loc>https://melonyii.github.io/post/2018-01-26-datadog-django/</loc>
     <lastmod>2018-01-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/2017-12-15-django-meta/</loc>
+    <loc>https://melonyii.github.io/post/2017-12-15-django-meta/</loc>
     <lastmod>2017-12-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/2017-12-07-viva-admin-to-antp/</loc>
+    <loc>https://melonyii.github.io/post/2017-12-07-viva-admin-to-antp/</loc>
     <lastmod>2017-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/2018-01-05-python-apscheduler-memory-leak/</loc>
+    <loc>https://melonyii.github.io/post/2018-01-05-python-apscheduler-memory-leak/</loc>
     <lastmod>2018-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/2018-01-03-webpack-optimize/</loc>
+    <loc>https://melonyii.github.io/post/2018-01-03-webpack-optimize/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
   </url>
   
