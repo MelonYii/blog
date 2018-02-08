@@ -3,3 +3,4 @@ languageCode = "zh-cn"
 title = "Melon Bolg"
 theme = "hugo-nuo"
 publishDir = "docs"
+canonifyurls = true
