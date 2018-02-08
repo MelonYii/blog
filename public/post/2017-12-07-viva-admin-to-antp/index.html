@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>从dva-1.x antd-2.x react-15.x到dva-2.x antd-3.x react-16.x</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="" />
+  <meta name="description" content=" 从react-admin到Ant Design Pro 本次变化，也是整体技术栈的升级 component, routes 变化 在之前的react-admin中，components承接的是route的详情化。而现在ADP的component则是用来存放公共组件的地方
+数据流 虽然两者运用的都是redux的方式，但是在实际处理的时候还是有比较大的区别。我们拿获取列表数据，并且能够filter进行搜索举个例子。
+react-admin 发起action时候需要先在route中封装getlistfunc。接着在components 中使用
+ADP " />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="从dva-1.x antd-2.x react-15.x到dva-2.x antd-3.x react-16.x" />
+    <meta name="twitter:description" content=" 从react-admin到Ant Design Pro 本次变化，也是整体技术栈的升级 component, routes 变化 在之前的react-admin中，components承接的是route的详情化。而现在ADP的component则是用来存放公共组件的地方
+数据流 虽然两者运用的都是redux的方式，但是在实际处理的时候还是有比较大的区别。我们拿获取列表数据，并且能够filter进行搜索举个例子。
+react-admin 发起action时候需要先在route中封装getlistfunc。接着在components 中使用
+ADP " />
+    <meta name="twitter:image" content="http://example.org/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="从dva-1.x antd-2.x react-15.x到dva-2.x antd-3.x react-16.x" />
+  <meta property="og:description" content=" 从react-admin到Ant Design Pro 本次变化，也是整体技术栈的升级 component, routes 变化 在之前的react-admin中，components承接的是route的详情化。而现在ADP的component则是用来存放公共组件的地方
+数据流 虽然两者运用的都是redux的方式，但是在实际处理的时候还是有比较大的区别。我们拿获取列表数据，并且能够filter进行搜索举个例子。
+react-admin 发起action时候需要先在route中封装getlistfunc。接着在components 中使用
+ADP " />
+  <meta property="og:url" content="http://example.org/post/2017-12-07-viva-admin-to-antp/" />
+  <meta property="og:image" content="http://example.org/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.36" />
+
+
+<link rel="canonical" href="http://example.org/post/2017-12-07-viva-admin-to-antp/" />
+<link rel="alternative" href="/index.xml" title="Melon Bolg" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Melon Bolg" />
+<meta name="msapplication-tooltip" content="Melon Bolg" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="" alt="Avatar">
+  
+  <h2 class="title">Melon Bolg</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">从dva-1.x antd-2.x react-15.x到dva-2.x antd-3.x react-16.x</h1>
+      <p class="post-meta">@ · Jan 1, 0001 · 1 min read</p>
+    </header>
+    <article class="post-content">
+
+<h1 id="从-react-admin-https-github-com-yezihaohao-react-admin-到-ant-design-pro-https-pro-ant-design">从<a href="https://github.com/yezihaohao/react-admin">react-admin</a>到<a href="https://pro.ant.design/">Ant Design Pro</a></h1>
+
+<p>本次变化，也是整体技术栈的升级
+<!-- Todo --></p>
+
+<h2 id="component-routes-变化"><strong>component, routes</strong> 变化</h2>
+
+<p>在之前的<code>react-admin</code>中，<code>components</code>承接的是<code>route</code>的详情化。而现在<code>ADP</code>的<a href="https://pro.ant.design/docs/new-component">component</a>则是用来存放公共组件的地方</p>
+
+<h2 id="数据流">数据流</h2>
+
+<p>虽然两者运用的都是<code>redux</code>的方式，但是在实际处理的时候还是有比较大的区别。我们拿获取列表数据，并且能够<code>filter</code>进行搜索举个例子。</p>
+
+<h3 id="react-admin">react-admin</h3>
+
+<p>发起action时候需要先在route中封装<code>getlist</code>func。接着在components 中使用</p>
+
+<h3 id="adp">ADP</h3>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 Melon Bolg</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>
