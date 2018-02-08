@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sequel on Melon Bolg</title>
-    <link>https://melonyii.github.io/blog/tags/sequel/</link>
+    <link>https://melonyii.github.io/docs/tags/sequel/</link>
     <description>Recent content in Sequel on Melon Bolg</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 08 Feb 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://melonyii.github.io/blog/tags/sequel/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://melonyii.github.io/docs/tags/sequel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sequel 使用中碰到的一些问题</title>
-      <link>https://melonyii.github.io/blog/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
+      <link>https://melonyii.github.io/docs/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 08 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://melonyii.github.io/blog/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://melonyii.github.io/docs/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
       <description>在连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。又不能使用sudo所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）</description>
     </item>
     

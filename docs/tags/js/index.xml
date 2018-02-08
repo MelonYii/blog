@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Js on Melon Bolg</title>
-    <link>https://melonyii.github.io/blog/tags/js/</link>
+    <link>https://melonyii.github.io/docs/tags/js/</link>
     <description>Recent content in Js on Melon Bolg</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 14 Feb 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://melonyii.github.io/blog/tags/js/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://melonyii.github.io/docs/tags/js/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>在开发中使用fetch跨域中碰到的问题</title>
-      <link>https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</link>
+      <link>https://melonyii.github.io/docs/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</link>
       <pubDate>Tue, 14 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</guid>
+      <guid>https://melonyii.github.io/docs/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</guid>
       <description>后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Content-Type中。 当进行跨域访问的时候，发现这两者都不见了。正常的头会因为跨域影响。</description>
     </item>
     
