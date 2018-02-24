@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://melonyii.github.io/blog/post/2018-02-09-%E8%BF%81%E7%A7%BBblog/</loc>
+    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
   </url>
@@ -15,6 +20,12 @@
   <url>
     <loc>https://melonyii.github.io/blog/categories/articles/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://melonyii.github.io/blog/tags/axios/</loc>
+    <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -36,6 +47,18 @@
   </url>
   
   <url>
+    <loc>https://melonyii.github.io/blog/tags/hugo/</loc>
+    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://melonyii.github.io/blog/tags/jekyll/</loc>
+    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://melonyii.github.io/blog/tags/js/</loc>
     <lastmod>2017-02-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -43,13 +66,13 @@
   
   <url>
     <loc>https://melonyii.github.io/blog/</loc>
-    <lastmod>2017-02-14T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://melonyii.github.io/blog/post/</loc>
-    <lastmod>2017-02-14T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
