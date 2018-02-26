@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>Docker 实践</title>
+  <title>通过Docker部署Flask和Django应用实践</title>
 
   
   
@@ -16,24 +16,27 @@
 
   
   <meta name="author" content="" />
-  <meta name="description" content=" Docker 实践 玩Docker其实对于使用者 来说，最先碰到的应该就是Dockerfile的编写了。Dockerfile就是你创建整个容器
-Flask &#43; uwsgi &#43; Docker Django &#43; uwsgi &#43; Nginx &#43; Docker " />
+  <meta name="description" content="这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
+日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
+Flask &#43; uwsgi &#43; Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server." />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
-    <meta name="twitter:title" content="Docker 实践" />
-    <meta name="twitter:description" content=" Docker 实践 玩Docker其实对于使用者 来说，最先碰到的应该就是Dockerfile的编写了。Dockerfile就是你创建整个容器
-Flask &#43; uwsgi &#43; Docker Django &#43; uwsgi &#43; Nginx &#43; Docker " />
+    <meta name="twitter:title" content="通过Docker部署Flask和Django应用实践" />
+    <meta name="twitter:description" content="这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
+日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
+Flask &#43; uwsgi &#43; Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server." />
     <meta name="twitter:image" content="https://melonyii.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Docker 实践" />
-  <meta property="og:description" content=" Docker 实践 玩Docker其实对于使用者 来说，最先碰到的应该就是Dockerfile的编写了。Dockerfile就是你创建整个容器
-Flask &#43; uwsgi &#43; Docker Django &#43; uwsgi &#43; Nginx &#43; Docker " />
+  <meta property="og:title" content="通过Docker部署Flask和Django应用实践" />
+  <meta property="og:description" content="这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
+日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
+Flask &#43; uwsgi &#43; Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server." />
   <meta property="og:url" content="https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/" />
   <meta property="og:image" content="https://melonyii.github.io/img/avatar.jpg" />
 
@@ -186,23 +189,252 @@ Flask &#43; uwsgi &#43; Docker Django &#43; uwsgi &#43; Nginx &#43; Docker " />
 
   <section class="main post-detail">
     <header class="post-header">
-      <h1 class="post-title">Docker 实践</h1>
-      <p class="post-meta">@ · Jan 1, 0001 · 1 min read</p>
+      <h1 class="post-title">通过Docker部署Flask和Django应用实践</h1>
+      <p class="post-meta">@ · Aug 31, 2017 · 4 min read</p>
     </header>
     <article class="post-content">
 
-<h1 id="docker-实践">Docker 实践</h1>
+<hr />
 
-<p>玩Docker其实对于使用者 来说，最先碰到的应该就是Dockerfile的编写了。Dockerfile就是你创建整个容器</p>
+<p>这里假设，你已经有一个<code>flask</code>或者<code>django</code>项目，并且能够在主机上面成功部署。现在你想迁移到<code>docker</code>环境中。这篇文章可以给你一定的参考。我们在<code>docker</code>内部使用<a href="http://supervisord.org/"><code>supervisor</code></a>管理进程，当应用crash时，能够及时重启。<a href="http://liyangliang.me/posts/2015/06/using-supervisor/">supervisor简单教程及介绍(cn)</a>。</p>
 
-<h3 id="flask-uwsgi-docker">Flask + uwsgi + Docker</h3>
+<h2 id="日志">日志</h2>
 
-<h3 id="django-uwsgi-nginx-docker">Django + uwsgi + Nginx + Docker</h3>
+<p>由于使用了<code>supervisor</code>，所以<code>uwsgi</code>，<code>nginx</code>日志都会在<code>/var/log/supervisor/</code>目录下</p>
+
+<h2 id="flask-uwsgi-nginx">Flask + uwsgi + Nginx</h2>
+
+<h3 id="nginx配置文件-nginx-conf">nginx配置文件[nginx.conf]</h3>
+
+<pre><code class="language-conf">
+# configuration of the server
+server {
+    # the port your site will be served on, default_server indicates that this server block
+    # is the block to use if no blocks match the server_name
+    listen      80;
+    server_name yourhost;
+    access_log  /var/log/nginx/xx.log;
+    # the domain name it will serve for
+    charset     utf-8;
+
+    # max upload size
+    client_max_body_size 75M;   # adjust to taste
+
+    # Finally, send all non-media requests to the Django server.
+    location / {
+        uwsgi_pass  127.0.0.1:5005;
+        include     /etc/nginx/uwsgi_params; # the uwsgi_params file you installed
+    }
+
+    location ~ ^/nginx-status {
+        stub_status on;
+    }
+}
+
+</code></pre>
+
+<h3 id="uwsgi配置文件-start-ini">uwsgi配置文件[start.ini]</h3>
+
+<pre><code class="language-ini">[uwsgi]
+wsgi-file = app.py
+callable = app
+socket = :5005
+processes = 1
+threads = 30
+lazy-apps=true
+; daemonize=uwsgi.log
+buffer-size = 65535
+</code></pre>
+
+<h3 id="docker配置文件-dockerfile">docker配置文件[dockerfile]</h3>
+
+<pre><code class="language-dockerfile">FROM ubuntu:16.04
+
+ENV TZ Asia/Shanghai
+
+RUN apt-get update &amp;&amp; apt-get install -yq python-dev \
+    python-pip \
+    libpq-dev \
+    libmysqlclient-dev \
+    nginx \
+    tzdata \
+    supervisor
+
+ADD . /code
+WORKDIR /code
+
+RUN pip install --upgrade pip &amp;&amp; pip install uwsgi
+RUN pip install -r requirements.txt
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; dpkg-reconfigure -f noninteractive tzdata
+
+COPY config/nginx.conf /etc/nginx/conf.d/
+COPY config/supervisor.conf /etc/supervisor/conf.d/
+
+EXPOSE 80
+
+CMD [&quot;supervisord&quot;, &quot;-n&quot;]
+
+</code></pre>
+
+<h3 id="supervisor配置文件-supervisor-conf">supervisor配置文件[supervisor.conf]</h3>
+
+<pre><code class="language-conf">[program:app-uwsgi]
+command = /usr/local/bin/uwsgi --ini /code/start.ini
+
+[program:nginx-app]
+command = /usr/sbin/nginx -g &quot;daemon off;&quot;
+</code></pre>
+
+<h2 id="django-uwsgi-nginx">Django + uwsgi + Nginx</h2>
+
+<h3 id="nginx配置-nginx-conf">nginx配置[nginx.conf]</h3>
+
+<pre><code class="language-conf"># nginx-app.conf
+
+# the upstream component nginx needs to connect to
+upstream django {
+    server 127.0.0.1:9100; # for a web port socket (we'll use this first)
+}
+
+# configuration of the server
+server {
+    # the port your site will be served on, default_server indicates that this server block
+    # is the block to use if no blocks match the server_name
+    listen      80;
+    server_name yourhost;
+    access_log  /var/log/nginx/xx.log;
+    # the domain name it will serve for
+    charset     utf-8;
+
+    # max upload size
+    client_max_body_size 75M;   # adjust to taste
+
+    location / {
+        uwsgi_pass  127.0.0.1:9100;
+        include     /etc/nginx/uwsgi_params; # the uwsgi_params file you installed
+    }
+
+    location ~ ^/nginx-status {
+        stub_status on;
+    }
+}
+
+</code></pre>
+
+<h3 id="uwsgi配置文件-start-ini-1">uwsgi配置文件[start.ini]</h3>
+
+<pre><code class="language-ini">[uwsgi]
+socket = 0.0.0.0:9100
+chdir =/code
+wsgi-file =/client/wsgi.py
+processes =2
+threads =2
+; daemonize=/home/docker/code/uwsgi.log
+buffer-size = 65535
+</code></pre>
+
+<h3 id="docker配置文件-dockerfile-1">docker配置文件[dockerfile]</h3>
+
+<pre><code class="language-dockerfile"># Copyright 2013 Thatcher Peskens
+#
+# Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM ubuntu:16.04
+
+MAINTAINER Dockerfiles
+
+ENV TZ Asia/Shanghai
+
+# Install required packages and remove the apt packages cache when done.
+
+RUN apt-get update &amp;&amp; \
+    apt-get upgrade -y &amp;&amp; \ 
+    apt-get install -y \
+    python \
+    python-dev \
+    python-setuptools \
+    python-pip \
+    libmysqlclient-dev \
+    nginx \
+    tzdata \
+    libssl-dev \
+    supervisor &amp;&amp; \
+    pip install -U pip setuptools
+
+# install uwsgi now because it takes a little while
+RUN pip install uwsgi
+
+# setup all the configfiles
+COPY config/nginx-app.conf /etc/nginx/conf.d/
+COPY config/supervisor-app.conf /etc/supervisor/conf.d/
+
+# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
+# to prevent re-installinig (all your) dependencies when you made a change a line or two in your app.
+
+COPY requirements.txt /home/docker/
+
+RUN pip install -r requirements.txt
+
+# set timezone 
+
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; dpkg-reconfigure -f noninteractive tzdata
+
+
+# add (the rest of) our code
+
+ADD . /code
+WORKDIR /code
+
+# install django, normally you would remove this step because your project would already
+# be installed in the code/app/ directory
+
+EXPOSE 80
+CMD [&quot;supervisord&quot;, &quot;-n&quot;]
+
+</code></pre>
+
+<h3 id="supervisor配置文件-supervisor-conf-1">supervisor配置文件[supervisor.conf]</h3>
+
+<pre><code class="language-conf">[program:app-uwsgi]
+command = /usr/local/bin/uwsgi --ini /code/start.ini
+
+[program:nginx-app]
+command = /usr/sbin/nginx -g &quot;daemon off;&quot;
+</code></pre>
+
+<h3 id="启动">启动</h3>
+
+<pre><code class="language-sh">docker build -t your_product . # 构建镜像
+
+docker run -d -p 80:80 your_product # 启动一个 CONTAINER 运行镜像
+</code></pre>
 </article>
     <footer class="post-footer">
       
+      <ul class="post-tags">
+        
+          <li><a href="https://melonyii.github.io/blog/tags/deploy"><span class="tag">Deploy</span></a></li>
+        
+          <li><a href="https://melonyii.github.io/blog/tags/docker"><span class="tag">Docker</span></a></li>
+        
+          <li><a href="https://melonyii.github.io/blog/tags/flask"><span class="tag">Flask</span></a></li>
+        
+          <li><a href="https://melonyii.github.io/blog/tags/django"><span class="tag">Django</span></a></li>
+        
+      </ul>
+      
       <p class="post-copyright">
-        This post was published <strong>177</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>179</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     

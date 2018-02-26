@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deploy on Melon Bolg</title>
+    <link>https://melonyii.github.io/blog/tags/deploy/</link>
+    <description>Recent content in Deploy on Melon Bolg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 31 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://melonyii.github.io/blog/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>通过Docker部署Flask和Django应用实践</title>
+      <link>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</guid>
+      <description>这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
+日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
+Flask + uwsgi + Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server.</description>
+    </item>
+    
+  </channel>
+</rss>

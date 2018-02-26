@@ -16,21 +16,21 @@
 
   
   <meta name="author" content="" />
-  <meta name="description" content="在连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。又不能使用sudo所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）" />
+  <meta name="description" content="在使用Sequel连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。由于都是在软件内部执行的，不能使用超管权限所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）" />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="Sequel 使用中碰到的一些问题" />
-    <meta name="twitter:description" content="在连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。又不能使用sudo所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）" />
+    <meta name="twitter:description" content="在使用Sequel连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。由于都是在软件内部执行的，不能使用超管权限所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）" />
     <meta name="twitter:image" content="https://melonyii.github.io/img/avatar.jpg" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Sequel 使用中碰到的一些问题" />
-  <meta property="og:description" content="在连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。又不能使用sudo所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）" />
+  <meta property="og:description" content="在使用Sequel连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。由于都是在软件内部执行的，不能使用超管权限所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）" />
   <meta property="og:url" content="https://melonyii.github.io/blog/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" />
   <meta property="og:image" content="https://melonyii.github.io/img/avatar.jpg" />
 
@@ -186,7 +186,7 @@
       <h1 class="post-title">Sequel 使用中碰到的一些问题</h1>
       <p class="post-meta">@ · Feb 8, 2017 · 1 min read</p>
     </header>
-    <article class="post-content"><p>在连接数据库的时候，采用ssh方式连接的过程中，碰到<code>Permissions 0644 for '/Users/melonyii/Documents/pem/xxx.pem' are too open.</code>,显然是没有权限了。又不能使用<code>sudo</code>所以只能修改这份文件的权限了。<code>chmod 400 xxx.pem</code>（读取权限）</p>
+    <article class="post-content"><p>在使用<code>Sequel</code>连接数据库的时候，采用ssh方式连接的过程中，碰到<code>Permissions 0644 for '/Users/melonyii/Documents/pem/xxx.pem' are too open.</code>,显然是没有权限了。由于都是在软件内部执行的，不能使用超管权限所以只能修改这份文件的权限了。<code>chmod 400 xxx.pem</code>（读取权限）</p>
 </article>
     <footer class="post-footer">
       
@@ -194,10 +194,12 @@
         
           <li><a href="https://melonyii.github.io/blog/tags/sequel"><span class="tag">Sequel</span></a></li>
         
+          <li><a href="https://melonyii.github.io/blog/tags/mac"><span class="tag">Mac</span></a></li>
+        
       </ul>
       
       <p class="post-copyright">
-        This post was published <strong>381</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        This post was published <strong>383</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     

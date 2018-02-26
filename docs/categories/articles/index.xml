@@ -11,25 +11,6 @@
     
     
     <item>
-      <title>Docker 实践</title>
-      <link>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</guid>
-      <description> Docker 实践 玩Docker其实对于使用者 来说，最先碰到的应该就是Dockerfile的编写了。Dockerfile就是你创建整个容器
-Flask + uwsgi + Docker Django + uwsgi + Nginx + Docker </description>
-    </item>
-    
-    <item>
-      <title>React 组件更新疑问</title>
-      <link>https://melonyii.github.io/blog/post/2017-05-19-react-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%96%91%E9%97%AE/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-05-19-react-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%96%91%E9%97%AE/</guid>
-      <description>React 组件更新疑问 今天在使用antd 过程中，要对表单选择进行动态处理，发现props改变了，并没有触发 rowSelection.getCheckboxProps 占着坑，之后有空研究一下</description>
-    </item>
-    
-    <item>
       <title>datadog 监控docker中Django应用</title>
       <link>https://melonyii.github.io/blog/post/2018-01-26-datadog-django/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

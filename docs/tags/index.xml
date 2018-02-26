@@ -21,11 +21,47 @@
     </item>
     
     <item>
+      <title>Deploy</title>
+      <link>https://melonyii.github.io/blog/tags/deploy/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/tags/deploy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Django</title>
+      <link>https://melonyii.github.io/blog/tags/django/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://melonyii.github.io/blog/tags/docker/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Fetch</title>
       <link>https://melonyii.github.io/blog/tags/fetch/</link>
       <pubDate>Tue, 14 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/tags/fetch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flask</title>
+      <link>https://melonyii.github.io/blog/tags/flask/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/tags/flask/</guid>
       <description></description>
     </item>
     
@@ -53,6 +89,15 @@
       <pubDate>Tue, 14 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>https://melonyii.github.io/blog/tags/mac/</link>
+      <pubDate>Wed, 08 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/tags/mac/</guid>
       <description></description>
     </item>
     

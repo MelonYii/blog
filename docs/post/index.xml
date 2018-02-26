@@ -17,7 +17,19 @@
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/post/2018-02-09-%E8%BF%81%E7%A7%BBblog/</guid>
-      <description>之前的blog一直在写，但是没有更新。最近想更新的时候才想起来jekyll环境是在我另一台电脑上的。因此将blog换到环境简便的hugo</description>
+      <description> 之前的blog一直在写，但是没有更新。最近想更新的时候才想起来jekyll环境是在我另一台电脑上的。因此将blog换到环境简便的hugo
+Usage hugo  </description>
+    </item>
+    
+    <item>
+      <title>通过Docker部署Flask和Django应用实践</title>
+      <link>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</guid>
+      <description>这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
+日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
+Flask + uwsgi + Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server.</description>
     </item>
     
     <item>
@@ -28,7 +40,8 @@
       <guid>https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</guid>
       <description> CORS（Cross-origin resource sharing） “跨域资源共享”
 后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Content-Type中。 当进行跨域访问的时候，发现这两者都不见了。正常的头会因为跨域影响。
-fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: &amp;lsquo;include&amp;rsquo;}) 如果是非简单请求跨域时使用了mode: &#39;cors&#39;，所有的头 都会加上Access-Control-xx。 请求方法是put，或者Content-Type字段的类型是application/json 都是非简单请求 如果是简单请求， 其实在浏览器发出请求的时候，是不需要做多余操作的，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。  参考  跨域——CORS 详解 fetch.js 传统 Ajax 已死，Fetch 永生 跨域资源共享 CORS 详解  </description>
+fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: &amp;lsquo;include&amp;rsquo;}) 如果是非简单请求跨域时使用了mode: &#39;cors&#39;，所有的头 都会加上Access-Control-xx。 请求方法是put，或者Content-Type字段的类型是application/json 都是非简单请求 如果是简单请求， 其实在浏览器发出请求的时候，是不需要做多余操作的，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。  最后说一句，去用axios吧~~
+参考  跨域——CORS 详解 fetch.js 传统 Ajax 已死，Fetch 永生 跨域资源共享 CORS 详解  </description>
     </item>
     
     <item>
@@ -37,26 +50,7 @@ fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(
       <pubDate>Wed, 08 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/post/2017-02-08-sequel%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
-      <description>在连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。又不能使用sudo所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）</description>
-    </item>
-    
-    <item>
-      <title>Docker 实践</title>
-      <link>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</guid>
-      <description> Docker 实践 玩Docker其实对于使用者 来说，最先碰到的应该就是Dockerfile的编写了。Dockerfile就是你创建整个容器
-Flask + uwsgi + Docker Django + uwsgi + Nginx + Docker </description>
-    </item>
-    
-    <item>
-      <title>React 组件更新疑问</title>
-      <link>https://melonyii.github.io/blog/post/2017-05-19-react-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%96%91%E9%97%AE/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-05-19-react-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%96%91%E9%97%AE/</guid>
-      <description>React 组件更新疑问 今天在使用antd 过程中，要对表单选择进行动态处理，发现props改变了，并没有触发 rowSelection.getCheckboxProps 占着坑，之后有空研究一下</description>
+      <description>在使用Sequel连接数据库的时候，采用ssh方式连接的过程中，碰到Permissions 0644 for &#39;/Users/melonyii/Documents/pem/xxx.pem&#39; are too open.,显然是没有权限了。由于都是在软件内部执行的，不能使用超管权限所以只能修改这份文件的权限了。chmod 400 xxx.pem（读取权限）</description>
     </item>
     
     <item>

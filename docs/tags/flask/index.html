@@ -6,7 +6,7 @@
 
   
   <title>
-  Tag → hugo
+  Tag → flask
   
    | Melon Bolg
 </title>
@@ -33,7 +33,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Melon Bolg" />
   <meta property="og:description" content="" />
-  <meta property="og:url" content="https://melonyii.github.io/blog/tags/hugo/" />
+  <meta property="og:url" content="https://melonyii.github.io/blog/tags/flask/" />
   <meta property="og:image" content="https://melonyii.github.io/img/avatar.jpg" />
 
 
@@ -42,7 +42,7 @@
 <meta name="generator" content="Hugo 0.36" />
 
 
-<link rel="canonical" href="https://melonyii.github.io/blog/tags/hugo/" />
+<link rel="canonical" href="https://melonyii.github.io/blog/tags/flask/" />
 <link rel="alternative" href="https://melonyii.github.io/blog/index.xml" title="Melon Bolg" type="application/atom+xml" />
 
 
@@ -190,14 +190,15 @@
       
         <article class="post-entry">
   <header class="post-header">
-    <h3 class="post-title"><a href="https://melonyii.github.io/blog/post/2018-02-09-%E8%BF%81%E7%A7%BBblog/" class="post-link">将blog从jekyll迁移至hugo</a></h3>
-    <p class="post-meta">@ · Feb 8, 2018 · 1 min read</p>
+    <h3 class="post-title"><a href="https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/" class="post-link">通过Docker部署Flask和Django应用实践</a></h3>
+    <p class="post-meta">@ · Aug 31, 2017 · 4 min read</p>
   </header>
   
-  <p class="post-summary"> 之前的blog一直在写，但是没有更新。最近想更新的时候才想起来jekyll环境是在我另一台电脑上的。因此将blog换到环境简便的hugo
-Usage hugo  </p>
+  <p class="post-summary">这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
+日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
+Flask &#43; uwsgi &#43; Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server.</p>
   <footer class="post-footer">
-    <a class="read-more" href="https://melonyii.github.io/blog/post/2018-02-09-%E8%BF%81%E7%A7%BBblog/">Read More →</a>
+    <a class="read-more" href="https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/">Read More →</a>
   </footer>
 </article>
 
