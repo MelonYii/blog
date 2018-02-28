@@ -6,7 +6,7 @@
 
   
   <title>
-  Tag → flask
+  Tag → python
   
    | Melon Bolg
 </title>
@@ -33,7 +33,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Melon Bolg" />
   <meta property="og:description" content="" />
-  <meta property="og:url" content="https://melonyii.github.io/blog/tags/flask/" />
+  <meta property="og:url" content="https://melonyii.github.io/blog/tags/python/" />
   <meta property="og:image" content="https://melonyii.github.io/img/avatar.jpg" />
 
 
@@ -42,7 +42,7 @@
 <meta name="generator" content="Hugo 0.36" />
 
 
-<link rel="canonical" href="https://melonyii.github.io/blog/tags/flask/" />
+<link rel="canonical" href="https://melonyii.github.io/blog/tags/python/" />
 <link rel="alternative" href="https://melonyii.github.io/blog/index.xml" title="Melon Bolg" type="application/atom+xml" />
 
 
@@ -206,21 +206,6 @@ class Foo(Bar): pass  如果是上述代码创建类，python将做如下动作�
  Foo中有__metaclass__这个属性吗？如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，请紧跟我的思路）。 如果Python没有找到__metaclass__，它会继续在Bar（父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。 如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中去寻找__metaclass__，并尝试做同样的操作。 如果还是找不到__metaclass__,Python就会用内置的type来创建这个类对象。  自定义元类 我们自定义元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
   <footer class="post-footer">
     <a class="read-more" href="https://melonyii.github.io/blog/post/2017-12-15-django-meta/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/" class="post-link">通过Docker部署Flask和Django应用实践</a></h3>
-    <p class="post-meta">@ · Aug 31, 2017 · 4 min read</p>
-  </header>
-  
-  <p class="post-summary">这里假设，你已经有一个flask或者django项目，并且能够在主机上面成功部署。现在你想迁移到docker环境中。这篇文章可以给你一定的参考。我们在docker内部使用supervisor管理进程，当应用crash时，能够及时重启。supervisor简单教程及介绍(cn)。
-日志 由于使用了supervisor，所以uwsgi，nginx日志都会在/var/log/supervisor/目录下
-Flask &#43; uwsgi &#43; Nginx nginx配置文件[nginx.conf] # configuration of the server server { # the port your site will be served on, default_server indicates that this server block # is the block to use if no blocks match the server_name listen 80; server_name yourhost; access_log /var/log/nginx/xx.log; # the domain name it will serve for charset utf-8; # max upload size client_max_body_size 75M; # adjust to taste # Finally, send all non-media requests to the Django server.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/">Read More →</a>
   </footer>
 </article>
 

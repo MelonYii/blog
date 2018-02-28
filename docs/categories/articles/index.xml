@@ -22,27 +22,6 @@
     </item>
     
     <item>
-      <title>django meta 探索</title>
-      <link>https://melonyii.github.io/blog/post/2017-12-15-django-meta/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-12-15-django-meta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>从dva-1.x antd-2.x react-15.x到dva-2.x antd-3.x react-16.x</title>
-      <link>https://melonyii.github.io/blog/post/2017-12-07-viva-admin-to-antp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-12-07-viva-admin-to-antp/</guid>
-      <description> 从react-admin到Ant Design Pro 本次变化，也是整体技术栈的升级 component, routes 变化 在之前的react-admin中，components承接的是route的详情化。而现在ADP的component则是用来存放公共组件的地方
-数据流 虽然两者运用的都是redux的方式，但是在实际处理的时候还是有比较大的区别。我们拿获取列表数据，并且能够filter进行搜索举个例子。
-react-admin 发起action时候需要先在route中封装getlistfunc。接着在components 中使用
-ADP </description>
-    </item>
-    
-    <item>
       <title>记一次python apscheduler 内存泄漏</title>
       <link>https://melonyii.github.io/blog/post/2018-01-05-python-apscheduler-memory-leak/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -22,6 +22,24 @@ Usage hugo  </description>
     </item>
     
     <item>
+      <title>python meta 探索</title>
+      <link>https://melonyii.github.io/blog/post/2017-12-15-django-meta/</link>
+      <pubDate>Fri, 15 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://melonyii.github.io/blog/post/2017-12-15-django-meta/</guid>
+      <description>最开始是想了解一下Django框架的ORM是如何实现的。发现其实涉及到的一个重要知识点就是meta。本人python并没有非常系统的学习，于是决定探一探python的meta。
+引子 Python 中的一切都是对象，包括类也是对象。大家有没有好奇，那类的类是什么呢？代码告诉你。
+a = 1 a.__class__ # int type(a) # int class A(object): pass A.__class__ # type A.__class__.__class__ # type type(A) # type  控制台中输出的type和查看类型的type的功能可不一样。类的类其实就是元类。
+type 能力 type除了我们常用的返回对象的类型外，还有一个功能。它能动态的创建类。
+type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)  以下两段代码是等价的，
+class MyShinyClass(object): pass MyShinyClass = type(&#39;MyShinyClass&#39;, (), {})  当我们使用 class 来创建类的时候，Python 实际上就是用 type 来创建类的，这种方式主要是通过元类(meta class)来实现的。
+什么是 meta class 在创建类的时候，有一个特殊的属性(__metaclass__)，可以用函数或者类来指定元类。
+class Foo(object): __metaclass__ = something  上述代码会使用something来创建类。
+class Foo(Bar): pass  如果是上述代码创建类，python将做如下动作：
+ Foo中有__metaclass__这个属性吗？如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，请紧跟我的思路）。 如果Python没有找到__metaclass__，它会继续在Bar（父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。 如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中去寻找__metaclass__，并尝试做同样的操作。 如果还是找不到__metaclass__,Python就会用内置的type来创建这个类对象。  自定义元类 我们自定义元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</description>
+    </item>
+    
+    <item>
       <title>通过Docker部署Flask和Django应用实践</title>
       <link>https://melonyii.github.io/blog/post/2017-08-31-docker-%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
@@ -62,27 +80,6 @@ fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(
       <description>使用datadog中的apm监控容器中django应用 由于最近工作需要，了解了一下Datadog。照着文档对cassandraDjango进行了监控。看了一下这方面的中文教程基本没有，并且还是有一些坑，记录一下。这篇博客主要是对于Django。
 概念 简答介绍下Datadog中的一些概念。
 部署 Datadog Agent是我们获取数据的服务。</description>
-    </item>
-    
-    <item>
-      <title>django meta 探索</title>
-      <link>https://melonyii.github.io/blog/post/2017-12-15-django-meta/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-12-15-django-meta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>从dva-1.x antd-2.x react-15.x到dva-2.x antd-3.x react-16.x</title>
-      <link>https://melonyii.github.io/blog/post/2017-12-07-viva-admin-to-antp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://melonyii.github.io/blog/post/2017-12-07-viva-admin-to-antp/</guid>
-      <description> 从react-admin到Ant Design Pro 本次变化，也是整体技术栈的升级 component, routes 变化 在之前的react-admin中，components承接的是route的详情化。而现在ADP的component则是用来存放公共组件的地方
-数据流 虽然两者运用的都是redux的方式，但是在实际处理的时候还是有比较大的区别。我们拿获取列表数据，并且能够filter进行搜索举个例子。
-react-admin 发起action时候需要先在route中封装getlistfunc。接着在components 中使用
-ADP </description>
     </item>
     
     <item>
