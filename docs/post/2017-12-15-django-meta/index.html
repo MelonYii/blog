@@ -1,219 +1,118 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-
-  <meta charset="utf-8" />
-
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
   
-  <title>python meta 探索</title>
-
-  
-  
-
-
-
-
-
-  
-  <meta name="author" content="" />
-  <meta name="description" content="最开始是想了解一下Django框架的ORM是如何实现的。发现其实涉及到的一个重要知识点就是meta。本人python并没有非常系统的学习，于是决定探一探python的meta。
-引子 Python 中的一切都是对象，包括类也是对象。大家有没有好奇，那类的类是什么呢？代码告诉你。
-a = 1 a.__class__ # int type(a) # int class A(object): pass A.__class__ # type A.__class__.__class__ # type type(A) # type  控制台中输出的type和查看类型的type的功能可不一样。类的类其实就是元类。
-type 能力 type除了我们常用的返回对象的类型外，还有一个功能。它能动态的创建类。
-type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)  以下两段代码是等价的，
-class MyShinyClass(object): pass MyShinyClass = type(&#39;MyShinyClass&#39;, (), {})  当我们使用 class 来创建类的时候，Python 实际上就是用 type 来创建类的，这种方式主要是通过元类(meta class)来实现的。
-什么是 meta class 在创建类的时候，有一个特殊的属性(__metaclass__)，可以用函数或者类来指定元类。
-class Foo(object): __metaclass__ = something  上述代码会使用something来创建类。
-class Foo(Bar): pass  如果是上述代码创建类，python将做如下动作：
- Foo中有__metaclass__这个属性吗？如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，请紧跟我的思路）。 如果Python没有找到__metaclass__，它会继续在Bar（父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。 如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中去寻找__metaclass__，并尝试做同样的操作。 如果还是找不到__metaclass__,Python就会用内置的type来创建这个类对象。  自定义元类 我们自定义元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。" />
-
-  
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@gohugoio" />
-    <meta name="twitter:title" content="python meta 探索" />
-    <meta name="twitter:description" content="最开始是想了解一下Django框架的ORM是如何实现的。发现其实涉及到的一个重要知识点就是meta。本人python并没有非常系统的学习，于是决定探一探python的meta。
-引子 Python 中的一切都是对象，包括类也是对象。大家有没有好奇，那类的类是什么呢？代码告诉你。
-a = 1 a.__class__ # int type(a) # int class A(object): pass A.__class__ # type A.__class__.__class__ # type type(A) # type  控制台中输出的type和查看类型的type的功能可不一样。类的类其实就是元类。
-type 能力 type除了我们常用的返回对象的类型外，还有一个功能。它能动态的创建类。
-type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)  以下两段代码是等价的，
-class MyShinyClass(object): pass MyShinyClass = type(&#39;MyShinyClass&#39;, (), {})  当我们使用 class 来创建类的时候，Python 实际上就是用 type 来创建类的，这种方式主要是通过元类(meta class)来实现的。
-什么是 meta class 在创建类的时候，有一个特殊的属性(__metaclass__)，可以用函数或者类来指定元类。
-class Foo(object): __metaclass__ = something  上述代码会使用something来创建类。
-class Foo(Bar): pass  如果是上述代码创建类，python将做如下动作：
- Foo中有__metaclass__这个属性吗？如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，请紧跟我的思路）。 如果Python没有找到__metaclass__，它会继续在Bar（父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。 如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中去寻找__metaclass__，并尝试做同样的操作。 如果还是找不到__metaclass__,Python就会用内置的type来创建这个类对象。  自定义元类 我们自定义元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。" />
-    <meta name="twitter:image" content="https://melonyii.github.io/img/avatar.jpg" />
-  
-
-  
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="python meta 探索" />
-  <meta property="og:description" content="最开始是想了解一下Django框架的ORM是如何实现的。发现其实涉及到的一个重要知识点就是meta。本人python并没有非常系统的学习，于是决定探一探python的meta。
-引子 Python 中的一切都是对象，包括类也是对象。大家有没有好奇，那类的类是什么呢？代码告诉你。
-a = 1 a.__class__ # int type(a) # int class A(object): pass A.__class__ # type A.__class__.__class__ # type type(A) # type  控制台中输出的type和查看类型的type的功能可不一样。类的类其实就是元类。
-type 能力 type除了我们常用的返回对象的类型外，还有一个功能。它能动态的创建类。
-type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)  以下两段代码是等价的，
-class MyShinyClass(object): pass MyShinyClass = type(&#39;MyShinyClass&#39;, (), {})  当我们使用 class 来创建类的时候，Python 实际上就是用 type 来创建类的，这种方式主要是通过元类(meta class)来实现的。
-什么是 meta class 在创建类的时候，有一个特殊的属性(__metaclass__)，可以用函数或者类来指定元类。
-class Foo(object): __metaclass__ = something  上述代码会使用something来创建类。
-class Foo(Bar): pass  如果是上述代码创建类，python将做如下动作：
- Foo中有__metaclass__这个属性吗？如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，请紧跟我的思路）。 如果Python没有找到__metaclass__，它会继续在Bar（父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。 如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中去寻找__metaclass__，并尝试做同样的操作。 如果还是找不到__metaclass__,Python就会用内置的type来创建这个类对象。  自定义元类 我们自定义元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。" />
-  <meta property="og:url" content="https://melonyii.github.io/blog/post/2017-12-15-django-meta/" />
-  <meta property="og:image" content="https://melonyii.github.io/img/avatar.jpg" />
-
-
-
-
-<meta name="generator" content="Hugo 0.36" />
-
-
-<link rel="canonical" href="https://melonyii.github.io/blog/post/2017-12-15-django-meta/" />
-<link rel="alternative" href="https://melonyii.github.io/blog/index.xml" title="Melon Bolg" type="application/atom+xml" />
-
-
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-
-
-<meta name="robots" content="index,follow" />
-<meta name="referrer" content="origin-when-cross-origin" />
-
-
-
-
-
-
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Melon Bolg" />
-<meta name="msapplication-tooltip" content="Melon Bolg" />
-<meta name='msapplication-navbutton-color' content="#5fbf5e" />
-<meta name="msapplication-TileColor" content="#5fbf5e" />
-<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://melonyii.github.io/blog/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://melonyii.github.io/blog/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://melonyii.github.io/blog/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://melonyii.github.io/blog/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://melonyii.github.io/blog/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://melonyii.github.io/blog/img/safari-pinned-tab.svg" color="#5fbf5e" />
-
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
-
-<link rel="stylesheet" href="https://melonyii.github.io/blog/css/bundle.css" />
-
-
-  
-  <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
-  <![endif]-->
-
-<!--[if lte IE 11]>
-    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
-  <![endif]-->
-
-
-<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
-
-
-<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
-
-
-</head>
-  <body>
+    <meta name="twitter:card" content="summary"/>
     
-    <div class="suspension">
-      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
-      
-        
-      
-    </div>
+      <meta name="twitter:image" content="https://melonyii.github.io/blog/images/avatar.png" />
     
-    
-  <header class="site-header">
-  <img class="avatar" src="" alt="Avatar">
   
-  <h2 class="title">Melon Bolg</h2>
   
-  <p class="subtitle"></p>
-  <button class="menu-toggle" type="button">
-    <span class="icon icon-menu"></span>
-  </button>
-  <nav class="site-menu collapsed">
-    <h2 class="offscreen">Main Menu</h2>
-    <ul class="menu-list">
-      
-      
-      
-      
-    </ul>
-  </nav>
-  <nav class="social-menu collapsed">
-    <h2 class="offscreen">Social Networks</h2>
-    <ul class="social-list">
+  <meta name="twitter:title" content="python meta 探索"/>
+  <meta name="twitter:description" content="最开始是想了解一下Django框架的ORM是如何实现的。发现其实涉及到的一个重要知识点就是meta。本人python并没有非常系统的学习，于"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@melonyii"/>
+  
 
-      
 
-      
 
-      
+		
+		<meta name="author" content="melonyii">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.36" />
+		<title>python meta 探索 &middot; Melon Bolg</title>
+		<link rel="shortcut icon" href="https://melonyii.github.io/blog/images/favicon.ico">
+		<link rel="stylesheet" href="https://melonyii.github.io/blog/css/style.css">
+		<link rel="stylesheet" href="https://melonyii.github.io/blog/css/highlight.css">
 
-      
+		
+		<link rel="stylesheet" href="https://melonyii.github.io/blog/css/font-awesome.min.css">
+		
 
-      
+		
+		<link href="https://melonyii.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Melon Bolg" />
+		
 
-      
+		
+	</head>
 
-      
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://melonyii.github.io/blog/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://melonyii.github.io/blog/posts'>Archive</a>
+	<a href='https://melonyii.github.io/blog/tags'>Tags</a>
+	<a href='https://melonyii.github.io/blog/about'>About</a>
 
-      
+	
 
-      
+	
+	<a class="cta" href="https://melonyii.github.io/blog/index.xml">Subscribe</a>
+	
+</nav>
 
-      
 
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://melonyii.github.io/blog/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
-      </li>
-
-    </ul>
-  </nav>
-</header>
-
-  <section class="main post-detail">
-    <header class="post-header">
-      <h1 class="post-title">python meta 探索</h1>
-      <p class="post-meta">@ · Dec 15, 2017 · 1 min read</p>
-    </header>
-    <article class="post-content">
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        python meta 探索
+                    </h1>
+                    <h2 class="headline">
+                    Dec 15, 2017 00:00
+                    · 1712 words
+                    · 4 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://melonyii.github.io/blog/tags/python">python</a>
+                          
+                              <a href="https://melonyii.github.io/blog/tags/meta">meta</a>
+                          
+                              <a href="https://melonyii.github.io/blog/tags/flask">flask</a>
+                          
+                              <a href="https://melonyii.github.io/blog/tags/django">django</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#引子">引子</a></li>
+<li><a href="#type-能力">type 能力</a></li>
+<li><a href="#什么是-meta-class">什么是 meta class</a></li>
+<li><a href="#自定义元类">自定义元类</a></li>
+<li><a href="#究竟为什么要使用元类">究竟为什么要使用元类？</a></li>
+<li><a href="#结语">结语</a>
+<ul>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
 
 <p>最开始是想了解一下Django框架的ORM是如何实现的。发现其实涉及到的一个重要知识点就是meta。本人python并没有非常系统的学习，于是决定探一探python的meta。</p>
 
@@ -335,68 +234,81 @@ print hasattr(Foo, 'BAR')
 
 <h3 id="参考">参考</h3>
 
-<p><a href="http://blog.jobbole.com/21351/">深刻理解Python中的元类(metaclass)</a>
-<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820064557c69858840b4c48d2b8411bc2ea9099ba000#0">使用元类-廖雪峰</a>
-<a href="http://icejoywoo.github.io/2017/03/28/python-intro-of-meta-class-and-type.html#%E4%BB%80%E4%B9%88%E6%98%AF-meta-class">Python 的 type 和 meta class 简介</a></p>
-</article>
-    <footer class="post-footer">
-      
-      <ul class="post-tags">
-        
-          <li><a href="https://melonyii.github.io/blog/tags/python"><span class="tag">Python</span></a></li>
-        
-          <li><a href="https://melonyii.github.io/blog/tags/meta"><span class="tag">Meta</span></a></li>
-        
-          <li><a href="https://melonyii.github.io/blog/tags/flask"><span class="tag">Flask</span></a></li>
-        
-          <li><a href="https://melonyii.github.io/blog/tags/django"><span class="tag">Django</span></a></li>
-        
-      </ul>
-      
-      <p class="post-copyright">
-        
-      </p>
-    </footer>
+<ul>
+<li><a href="http://blog.jobbole.com/21351/">深刻理解Python中的元类(metaclass)</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820064557c69858840b4c48d2b8411bc2ea9099ba000#0">使用元类-廖雪峰</a></li>
+<li><a href="http://icejoywoo.github.io/2017/03/28/python-intro-of-meta-class-and-type.html#%E4%BB%80%E4%B9%88%E6%98%AF-meta-class">Python 的 type 和 meta class 简介</a></li>
+</ul>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fmelonyii.github.io%2fblog%2fpost%2f2017-12-15-django-meta%2f - python%20meta%20%e6%8e%a2%e7%b4%a2 "><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
     
-      
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://github.com/MelonYii">
+        <i class="fa fa-github-square"></i>
+    </a>
     
-  </section>
-  <footer class="site-footer">
-  <p>© 2017-2018 Melon Bolg</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
-  
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> melonyii
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
 </footer>
 
+        </section>
+
+        <script src="https://melonyii.github.io/blog/js/jquery-3.3.1.min.js"></script>
+<script src="https://melonyii.github.io/blog/js/main.js"></script>
+<script src="https://melonyii.github.io/blog/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 
-<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\[','\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-      extensions: ["AMSmath.js", "AMSsymbols.js"] }
-    }
-  });
-</script>
-<script type="text/x-mathjax-config">
-  // Fix <code> tags after MathJax finishes running. This is a
-  // hack to overcome a shortcoming of Markdown. Discussion at
-  // https://github.com/mojombo/jekyll/issues/199
-  MathJax.Hub.Queue(() => {
-    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
-  });
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+ga('send', 'pageview');
 </script>
 
-<script src="https://melonyii.github.io/blog/js/bundle.js"></script>
 
 
 
 
-  </body>
+    </body>
 </html>

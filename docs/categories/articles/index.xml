@@ -5,7 +5,6 @@
     <link>https://melonyii.github.io/blog/categories/articles/</link>
     <description>Recent content in Articles on Melon Bolg</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
     
 	<atom:link href="https://melonyii.github.io/blog/categories/articles/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,9 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/post/2018-01-26-datadog-django/</guid>
-      <description>使用datadog中的apm监控容器中django应用 由于最近工作需要，了解了一下Datadog。照着文档对cassandraDjango进行了监控。看了一下这方面的中文教程基本没有，并且还是有一些坑，记录一下。这篇博客主要是对于Django。
-概念 简答介绍下Datadog中的一些概念。
-部署 Datadog Agent是我们获取数据的服务。</description>
+      <description>使用datadog中的apm监控容器中django应用 由于最近工作需要，了解了一下Datadog。照着文档对cassandraDjango进</description>
     </item>
     
     <item>
@@ -27,7 +24,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/post/2018-01-05-python-apscheduler-memory-leak/</guid>
-      <description> 记一次python apscheduler 内存泄漏 场景 </description>
+      <description>记一次python apscheduler 内存泄漏 场景</description>
     </item>
     
     <item>
@@ -36,9 +33,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/post/2018-01-03-webpack-optimize/</guid>
-      <description>记一次webpack 打包优化 场景 我们公司所有产品的后台都是在一个前端项目中，so 我们的项目越来越大。从开始打包的几个文件，几分钟到后来几百个文件，20多分钟。这个当然不能忍了。 目前打包打包出来有201个文件，
-优化前 time: 1000s~1200s total size: 112291323 B
-| size | file | | &amp;ndash; | &amp;ndash; | |1405578 | 011d3b0dc115e2ef0dae.async.js| |569754 | 05aa3325b981700333d7.async.js| |1048157 | 05e5fc19fff54bb524c8.async.js| |395192 | 0636dedd9830ecc2eefe.async.js| |367873 | 07885f481aebbad1b60d.async.js| |316387 | 07c4630feb88a55435f1.async.js| |449770 | 080ade662b7adff1346e.async.js| |582824 | 08762aba4c3d4aca77df.css| |557437 | 0882b9cfbcff727e0717.async.js| |458852 | 0a379ca4fde06b2d6442.async.js| |553569 | 0b7c474e33141d179b31.async.js| |283808 | 0ce98b914f462dd6860d.async.js| |464103 | 0ddb380dee6409ef3e8d.async.js| |364696 | 0ee07b26b71bf7fa7679.async.js| |1002908 | 0f09b312ef1090db9fff.async.js| |1051409 | 148f7d7dde6bebc6144b.</description>
+      <description>记一次webpack 打包优化 场景 我们公司所有产品的后台都是在一个前端项目中，so 我们的项目越来越大。从开始打包的几个文件，几分钟到后来几百个</description>
     </item>
     
   </channel>

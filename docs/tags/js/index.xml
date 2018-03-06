@@ -5,7 +5,6 @@
     <link>https://melonyii.github.io/blog/tags/js/</link>
     <description>Recent content in Js on Melon Bolg</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
     <lastBuildDate>Tue, 14 Feb 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://melonyii.github.io/blog/tags/js/index.xml" rel="self" type="application/rss+xml" />
@@ -17,10 +16,7 @@
       <pubDate>Tue, 14 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/</guid>
-      <description> CORS（Cross-origin resource sharing） “跨域资源共享”
-后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Content-Type中。 当进行跨域访问的时候，发现这两者都不见了。正常的头会因为跨域影响。
-fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: &amp;lsquo;include&amp;rsquo;}) 如果是非简单请求跨域时使用了mode: &#39;cors&#39;，所有的头 都会加上Access-Control-xx。 请求方法是put，或者Content-Type字段的类型是application/json 都是非简单请求 如果是简单请求， 其实在浏览器发出请求的时候，是不需要做多余操作的，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。  最后说一句，去用axios吧~~
-参考  跨域——CORS 详解 fetch.js 传统 Ajax 已死，Fetch 永生 跨域资源共享 CORS 详解  </description>
+      <description>CORS（Cross-origin resource sharing） “跨域资源共享” 后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Conte</description>
     </item>
     
   </channel>

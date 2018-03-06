@@ -122,6 +122,7 @@ print hasattr(Foo, 'BAR')
 虽然实际在工作中很少会用到这么高级的特性，但其实挺多框架都有用到，学习一下，在阅读这些源码的时候也能够比较顺利的进行下去。
 
 ### 参考
-[深刻理解Python中的元类(metaclass)](http://blog.jobbole.com/21351/)
-[使用元类-廖雪峰](https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820064557c69858840b4c48d2b8411bc2ea9099ba000#0)
-[Python 的 type 和 meta class 简介](http://icejoywoo.github.io/2017/03/28/python-intro-of-meta-class-and-type.html#%E4%BB%80%E4%B9%88%E6%98%AF-meta-class)
+
+* [深刻理解Python中的元类(metaclass)](http://blog.jobbole.com/21351/)
+* [使用元类-廖雪峰](https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820064557c69858840b4c48d2b8411bc2ea9099ba000#0)
+* [Python 的 type 和 meta class 简介](http://icejoywoo.github.io/2017/03/28/python-intro-of-meta-class-and-type.html#%E4%BB%80%E4%B9%88%E6%98%AF-meta-class)

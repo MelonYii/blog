@@ -1,201 +1,112 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-
-  <meta charset="utf-8" />
-
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
   
-  <title>在开发中使用fetch跨域中碰到的问题</title>
-
-  
-  
-
-
-
-
-
-  
-  <meta name="author" content="" />
-  <meta name="description" content=" CORS（Cross-origin resource sharing） “跨域资源共享”
-后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Content-Type中。 当进行跨域访问的时候，发现这两者都不见了。正常的头会因为跨域影响。
-fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: &amp;lsquo;include&amp;rsquo;}) 如果是非简单请求跨域时使用了mode: &#39;cors&#39;，所有的头 都会加上Access-Control-xx。 请求方法是put，或者Content-Type字段的类型是application/json 都是非简单请求 如果是简单请求， 其实在浏览器发出请求的时候，是不需要做多余操作的，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 &#43; 域名 &#43; 端口）。服务器根据这个值，决定是否同意这次请求。  最后说一句，去用axios吧~~
-参考  跨域——CORS 详解 fetch.js 传统 Ajax 已死，Fetch 永生 跨域资源共享 CORS 详解  " />
-
-  
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@gohugoio" />
-    <meta name="twitter:title" content="在开发中使用fetch跨域中碰到的问题" />
-    <meta name="twitter:description" content=" CORS（Cross-origin resource sharing） “跨域资源共享”
-后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Content-Type中。 当进行跨域访问的时候，发现这两者都不见了。正常的头会因为跨域影响。
-fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: &amp;lsquo;include&amp;rsquo;}) 如果是非简单请求跨域时使用了mode: &#39;cors&#39;，所有的头 都会加上Access-Control-xx。 请求方法是put，或者Content-Type字段的类型是application/json 都是非简单请求 如果是简单请求， 其实在浏览器发出请求的时候，是不需要做多余操作的，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 &#43; 域名 &#43; 端口）。服务器根据这个值，决定是否同意这次请求。  最后说一句，去用axios吧~~
-参考  跨域——CORS 详解 fetch.js 传统 Ajax 已死，Fetch 永生 跨域资源共享 CORS 详解  " />
-    <meta name="twitter:image" content="https://melonyii.github.io/img/avatar.jpg" />
-  
-
-  
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="在开发中使用fetch跨域中碰到的问题" />
-  <meta property="og:description" content=" CORS（Cross-origin resource sharing） “跨域资源共享”
-后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Content-Type中。 当进行跨域访问的时候，发现这两者都不见了。正常的头会因为跨域影响。
-fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: &amp;lsquo;include&amp;rsquo;}) 如果是非简单请求跨域时使用了mode: &#39;cors&#39;，所有的头 都会加上Access-Control-xx。 请求方法是put，或者Content-Type字段的类型是application/json 都是非简单请求 如果是简单请求， 其实在浏览器发出请求的时候，是不需要做多余操作的，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 &#43; 域名 &#43; 端口）。服务器根据这个值，决定是否同意这次请求。  最后说一句，去用axios吧~~
-参考  跨域——CORS 详解 fetch.js 传统 Ajax 已死，Fetch 永生 跨域资源共享 CORS 详解  " />
-  <meta property="og:url" content="https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/" />
-  <meta property="og:image" content="https://melonyii.github.io/img/avatar.jpg" />
-
-
-
-
-<meta name="generator" content="Hugo 0.36" />
-
-
-<link rel="canonical" href="https://melonyii.github.io/blog/post/2017-02-14-fetch-%E8%B7%A8%E5%9F%9F/" />
-<link rel="alternative" href="https://melonyii.github.io/blog/index.xml" title="Melon Bolg" type="application/atom+xml" />
-
-
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-
-
-<meta name="robots" content="index,follow" />
-<meta name="referrer" content="origin-when-cross-origin" />
-
-
-
-
-
-
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Melon Bolg" />
-<meta name="msapplication-tooltip" content="Melon Bolg" />
-<meta name='msapplication-navbutton-color' content="#5fbf5e" />
-<meta name="msapplication-TileColor" content="#5fbf5e" />
-<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://melonyii.github.io/blog/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://melonyii.github.io/blog/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://melonyii.github.io/blog/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://melonyii.github.io/blog/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://melonyii.github.io/blog/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://melonyii.github.io/blog/img/safari-pinned-tab.svg" color="#5fbf5e" />
-
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
-
-<link rel="stylesheet" href="https://melonyii.github.io/blog/css/bundle.css" />
-
-
-  
-  <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
-  <![endif]-->
-
-<!--[if lte IE 11]>
-    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
-  <![endif]-->
-
-
-<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
-
-
-<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
-
-
-</head>
-  <body>
+    <meta name="twitter:card" content="summary"/>
     
-    <div class="suspension">
-      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
-      
-        
-      
-    </div>
+      <meta name="twitter:image" content="https://melonyii.github.io/blog/images/avatar.png" />
     
-    
-  <header class="site-header">
-  <img class="avatar" src="" alt="Avatar">
   
-  <h2 class="title">Melon Bolg</h2>
   
-  <p class="subtitle"></p>
-  <button class="menu-toggle" type="button">
-    <span class="icon icon-menu"></span>
-  </button>
-  <nav class="site-menu collapsed">
-    <h2 class="offscreen">Main Menu</h2>
-    <ul class="menu-list">
-      
-      
-      
-      
-    </ul>
-  </nav>
-  <nav class="social-menu collapsed">
-    <h2 class="offscreen">Social Networks</h2>
-    <ul class="social-list">
+  <meta name="twitter:title" content="在开发中使用fetch跨域中碰到的问题"/>
+  <meta name="twitter:description" content="CORS（Cross-origin resource sharing） “跨域资源共享” 后端接口中，需要进行权限校验，分别放在了headers中的 authorization 与Conte"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@melonyii"/>
+  
 
-      
 
-      
 
-      
+		
+		<meta name="author" content="melonyii">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.36" />
+		<title>在开发中使用fetch跨域中碰到的问题 &middot; Melon Bolg</title>
+		<link rel="shortcut icon" href="https://melonyii.github.io/blog/images/favicon.ico">
+		<link rel="stylesheet" href="https://melonyii.github.io/blog/css/style.css">
+		<link rel="stylesheet" href="https://melonyii.github.io/blog/css/highlight.css">
 
-      
+		
+		<link rel="stylesheet" href="https://melonyii.github.io/blog/css/font-awesome.min.css">
+		
 
-      
+		
+		<link href="https://melonyii.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Melon Bolg" />
+		
 
-      
+		
+	</head>
 
-      
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://melonyii.github.io/blog/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://melonyii.github.io/blog/posts'>Archive</a>
+	<a href='https://melonyii.github.io/blog/tags'>Tags</a>
+	<a href='https://melonyii.github.io/blog/about'>About</a>
 
-      
+	
 
-      
+	
+	<a class="cta" href="https://melonyii.github.io/blog/index.xml">Subscribe</a>
+	
+</nav>
 
-      
 
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://melonyii.github.io/blog/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
-      </li>
-
-    </ul>
-  </nav>
-</header>
-
-  <section class="main post-detail">
-    <header class="post-header">
-      <h1 class="post-title">在开发中使用fetch跨域中碰到的问题</h1>
-      <p class="post-meta">@ · Feb 14, 2017 · 1 min read</p>
-    </header>
-    <article class="post-content">
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        在开发中使用fetch跨域中碰到的问题
+                    </h1>
+                    <h2 class="headline">
+                    Feb 14, 2017 00:00
+                    · 410 words
+                    · 1 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://melonyii.github.io/blog/tags/js">js</a>
+                          
+                              <a href="https://melonyii.github.io/blog/tags/fetch">fetch</a>
+                          
+                              <a href="https://melonyii.github.io/blog/tags/axios">axios</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#fetch-js-常见坑">fetch.js 常见坑</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
 
 <p><strong>CORS（Cross-origin resource sharing） “跨域资源共享”</strong></p>
 
@@ -221,63 +132,76 @@ fetch.js 常见坑  Fetch 请求默认是不带 cookie 的，需要设置 fetch(
 <li><a href="https://github.com/camsong/blog/issues/2">传统 Ajax 已死，Fetch 永生</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a></li>
 </ul>
-</article>
-    <footer class="post-footer">
-      
-      <ul class="post-tags">
-        
-          <li><a href="https://melonyii.github.io/blog/tags/js"><span class="tag">Js</span></a></li>
-        
-          <li><a href="https://melonyii.github.io/blog/tags/fetch"><span class="tag">Fetch</span></a></li>
-        
-          <li><a href="https://melonyii.github.io/blog/tags/axios"><span class="tag">Axios</span></a></li>
-        
-      </ul>
-      
-      <p class="post-copyright">
-        This post was published <strong>379</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-      </p>
-    </footer>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fmelonyii.github.io%2fblog%2fpost%2f2017-02-14-fetch-%25E8%25B7%25A8%25E5%259F%259F%2f - %e5%9c%a8%e5%bc%80%e5%8f%91%e4%b8%ad%e4%bd%bf%e7%94%a8fetch%e8%b7%a8%e5%9f%9f%e4%b8%ad%e7%a2%b0%e5%88%b0%e7%9a%84%e9%97%ae%e9%a2%98 "><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
     
-      
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://github.com/MelonYii">
+        <i class="fa fa-github-square"></i>
+    </a>
     
-  </section>
-  <footer class="site-footer">
-  <p>© 2017-2018 Melon Bolg</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
-  
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> melonyii
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
 </footer>
 
+        </section>
+
+        <script src="https://melonyii.github.io/blog/js/jquery-3.3.1.min.js"></script>
+<script src="https://melonyii.github.io/blog/js/main.js"></script>
+<script src="https://melonyii.github.io/blog/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 
-<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\[','\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-      extensions: ["AMSmath.js", "AMSsymbols.js"] }
-    }
-  });
-</script>
-<script type="text/x-mathjax-config">
-  // Fix <code> tags after MathJax finishes running. This is a
-  // hack to overcome a shortcoming of Markdown. Discussion at
-  // https://github.com/mojombo/jekyll/issues/199
-  MathJax.Hub.Queue(() => {
-    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
-  });
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+ga('send', 'pageview');
 </script>
 
-<script src="https://melonyii.github.io/blog/js/bundle.js"></script>
 
 
 
 
-  </body>
+    </body>
 </html>
